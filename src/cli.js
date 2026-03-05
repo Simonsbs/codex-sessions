@@ -33,24 +33,63 @@ function parseArgs(argv) {
   return options;
 }
 
-function formatDate(iso) {
+function formatDateCompact(iso) {
   if (!iso) return 'n/a';
   const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? 'n/a' : d.toLocaleString();
+  if (Number.isNaN(d.getTime())) return 'n/a';
+
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  const hour = String(d.getHours()).padStart(2, '0');
+  const minute = String(d.getMinutes()).padStart(2, '0');
+  return `${year}-${month}-${day} ${hour}:${minute}`;
 }
 
-function formatSize(bytes) {
-  return `${(bytes / 1024).toFixed(1)} KB`;
+function truncateText(value, maxWidth) {
+  const text = String(value ?? '');
+  if (maxWidth <= 0) return '';
+  if (text.length <= maxWidth) return text;
+  if (maxWidth <= 3) return '.'.repeat(maxWidth);
+  return `${text.slice(0, maxWidth - 3)}...`;
+}
+
+function padCell(value, width) {
+  return truncateText(value, width).padEnd(width, ' ');
 }
 
 function printSessionsTable(sessions) {
+  const terminalWidth = output.columns && output.columns > 80 ? output.columns : 120;
+  const fixed = {
+    index: 4,
+    id: 36,
+    modified: 16,
+  };
+  const separators = 3; // spaces between 4 columns
+  const used = fixed.index + fixed.id + fixed.modified + separators;
+  const promptWidth = Math.max(20, terminalWidth - used);
+
+  const header = [
+    padCell('#', fixed.index),
+    padCell('ID', fixed.id),
+    padCell('Modified', fixed.modified),
+    padCell('Prompt', promptWidth),
+  ].join(' ');
+
+  console.log(header);
+  console.log('-'.repeat(Math.min(terminalWidth, header.length)));
+
   for (let i = 0; i < sessions.length; i += 1) {
     const s = sessions[i];
-    const prompt = s.prompt ? s.prompt.slice(0, 80) : 'No prompt preview';
-    console.log(`${String(i + 1).padStart(3, ' ')}. ${s.name}`);
-    console.log(`     id: ${s.id}`);
-    console.log(`     modified: ${formatDate(s.modifiedAt)} | size: ${formatSize(s.sizeBytes)}`);
-    console.log(`     ${prompt}`);
+    const prompt = s.prompt || 'No prompt preview';
+    const displayText = s.customName ? `${s.name} | ${prompt}` : prompt;
+    const row = [
+      padCell(String(i + 1), fixed.index),
+      padCell(s.id, fixed.id),
+      padCell(formatDateCompact(s.modifiedAt), fixed.modified),
+      padCell(displayText, promptWidth),
+    ].join(' ');
+    console.log(row);
   }
 }
 

@@ -1,6 +1,6 @@
 {
-  "name": "codex-sessions",
-  "version": "0.3.0",
+  "name": "@simonsbs/codex-sessions",
+  "version": "0.4.1",
   "description": "Terminal UI and CLI for managing Codex sessions",
   "type": "module",
   "license": "MIT",
@@ -27,6 +27,7 @@
     "bin",
     "src",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE",
     "CONTRIBUTING.md",
     "CODE_OF_CONDUCT.md",

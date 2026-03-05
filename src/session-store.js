@@ -140,6 +140,7 @@ export class SessionStore {
       }
 
       const defaultName = path.basename(filePath, '.jsonl');
+      const customName = typeof meta.names[id] === 'string' && meta.names[id].trim().length > 0;
       return {
         id,
         filePath,
@@ -147,6 +148,7 @@ export class SessionStore {
         startedAt,
         prompt,
         name: meta.names[id] || defaultName,
+        customName,
         sizeBytes: stat.size,
         modifiedAt: stat.mtime.toISOString(),
       };

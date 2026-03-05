@@ -69,7 +69,7 @@ async function runCommand(store, command, args, asJson) {
     const [sessionId, ...nameParts] = args;
     const name = nameParts.join(' ').trim();
     if (!sessionId || !name) {
-      throw new Error('Usage: codex-session-tui rename <sessionId> <name>');
+      throw new Error('Usage: codex-sessions rename <sessionId> <name>');
     }
     const result = await store.renameSession(sessionId, name);
     console.log(`Renamed ${result.sessionId} => ${result.name}`);
@@ -79,7 +79,7 @@ async function runCommand(store, command, args, asJson) {
   if (command === 'delete') {
     const [sessionId] = args;
     if (!sessionId) {
-      throw new Error('Usage: codex-session-tui delete <sessionId>');
+      throw new Error('Usage: codex-sessions delete <sessionId>');
     }
     const result = await store.deleteSession(sessionId);
     console.log(`Deleted ${result.sessionId} (moved to ${result.trashPath})`);
@@ -89,7 +89,7 @@ async function runCommand(store, command, args, asJson) {
   if (command === 'copy') {
     const [sessionId] = args;
     if (!sessionId) {
-      throw new Error('Usage: codex-session-tui copy <sessionId>');
+      throw new Error('Usage: codex-sessions copy <sessionId>');
     }
     const result = await store.copySession(sessionId);
     console.log(`Copied ${result.sessionId} to ${result.copyPath}`);
@@ -99,7 +99,7 @@ async function runCommand(store, command, args, asJson) {
   if (command === 'duplicate') {
     const [sessionId] = args;
     if (!sessionId) {
-      throw new Error('Usage: codex-session-tui duplicate <sessionId>');
+      throw new Error('Usage: codex-sessions duplicate <sessionId>');
     }
     const result = await store.duplicateSession(sessionId);
     console.log(`Duplicated ${result.sessionId} as ${result.duplicateId}`);
@@ -108,7 +108,7 @@ async function runCommand(store, command, args, asJson) {
   }
 
   if (command === 'help' || command === '--help' || command === '-h') {
-    console.log('codex-session-tui [--codex-home <path>] [command]');
+    console.log('codex-sessions [--codex-home <path>] [command]');
     console.log('Commands:');
     console.log('  list [--json]');
     console.log('  rename <sessionId> <name>');

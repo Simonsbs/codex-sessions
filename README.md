@@ -1,4 +1,4 @@
-# codex-session-tui
+# codex-sessions
 
 Terminal-first session manager for Codex CLI.
 
@@ -17,23 +17,28 @@ This tool stays in the same workflow as Codex CLI:
 
 ## Install
 ```bash
-npm install -g codex-session-tui
+npm install -g codex-sessions
 ```
 
 ## Usage
 Interactive TUI mode:
 ```bash
-codex-session-tui
+codex-sessions
 ```
 
 Command mode:
 ```bash
-codex-session-tui list
-codex-session-tui list --json
-codex-session-tui rename <sessionId> "New Name"
-codex-session-tui delete <sessionId>
-codex-session-tui copy <sessionId>
-codex-session-tui duplicate <sessionId>
+codex-sessions list
+codex-sessions list --json
+codex-sessions rename <sessionId> "New Name"
+codex-sessions delete <sessionId>
+codex-sessions copy <sessionId>
+codex-sessions duplicate <sessionId>
+```
+
+Compatibility alias:
+```bash
+codex-session-tui
 ```
 
 Options:

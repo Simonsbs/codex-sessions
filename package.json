@@ -1,18 +1,18 @@
 {
-  "name": "codex-session-tui",
-  "version": "0.2.0",
+  "name": "codex-sessions",
+  "version": "0.3.0",
   "description": "Terminal UI and CLI for managing Codex sessions",
   "type": "module",
   "license": "MIT",
   "author": "Simon",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Simonsbs/codex-session-tui.git"
+    "url": "git+https://github.com/Simonsbs/codex-sessions.git"
   },
   "bugs": {
-    "url": "https://github.com/Simonsbs/codex-session-tui/issues"
+    "url": "https://github.com/Simonsbs/codex-sessions/issues"
   },
-  "homepage": "https://github.com/Simonsbs/codex-session-tui#readme",
+  "homepage": "https://github.com/Simonsbs/codex-sessions#readme",
   "keywords": [
     "codex",
     "cli",
@@ -33,6 +33,7 @@
     "SECURITY.md"
   ],
   "bin": {
+    "codex-sessions": "bin/codex-sessions.js",
     "codex-session-tui": "bin/codex-sessions.js"
   },
   "scripts": {

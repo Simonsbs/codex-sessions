@@ -1,18 +1,42 @@
 {
-  "name": "codex-session-webui",
-  "version": "0.1.0",
-  "description": "Local Web UI to manage Codex CLI sessions",
-  "main": "index.js",
-  "scripts": {
-    "test": "node --test",
-    "start": "node bin/codex-session-webui.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "name": "codex-session-tui",
+  "version": "0.2.0",
+  "description": "Terminal UI and CLI for managing Codex sessions",
   "type": "module",
-  "private": "false",
+  "license": "MIT",
+  "author": "Simon",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Simonsbs/codex-session-tui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Simonsbs/codex-session-tui/issues"
+  },
+  "homepage": "https://github.com/Simonsbs/codex-session-tui#readme",
+  "keywords": [
+    "codex",
+    "cli",
+    "tui",
+    "session",
+    "terminal"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "SECURITY.md"
+  ],
   "bin": {
-    "codex-session-webui": "bin/codex-session-webui.js"
+    "codex-session-tui": "bin/codex-sessions.js"
+  },
+  "scripts": {
+    "start": "node bin/codex-sessions.js",
+    "test": "node --test"
   }
 }

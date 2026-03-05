@@ -1,7 +1,6 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import os from 'node:os';
 
 const TEXT_DECODER = new TextDecoder('utf-8', { fatal: false });
 
@@ -240,11 +239,4 @@ export class SessionStore {
     return { sessionId, duplicateId: newSessionId, duplicatePath: dupPath };
   }
 
-  getDefaultBrowserUrl(port, host = '127.0.0.1') {
-    return `http://${host}:${port}`;
-  }
-
-  static defaultCodexHome() {
-    return path.join(os.homedir(), '.codex');
-  }
 }

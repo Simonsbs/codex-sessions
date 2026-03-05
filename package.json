@@ -1,0 +1,18 @@
+{
+  "name": "codex-session-webui",
+  "version": "0.1.0",
+  "description": "Local Web UI to manage Codex CLI sessions",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test",
+    "start": "node bin/codex-session-webui.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "private": "false",
+  "bin": {
+    "codex-session-webui": "bin/codex-session-webui.js"
+  }
+}
